@@ -1,0 +1,26 @@
+<div class="slideshow">
+  <a ng-click="previous()" class="slideshow__previous" ng-if="hasNavigation"></a>
+  <a ng-click="next()" class="slideshow__next" ng-if="hasNavigation"></a>
+
+  <div
+    class="slideshow__image"
+    ng-repeat="image in images"
+    ng-class="{
+      'is-next': $index > currentIndex,
+      'is-previous': $index < currentIndex,
+      'is-current': $index === currentIndex
+    }"
+  >
+    <img ng-src="{{:: image }}" alt="" />
+  </div>
+
+  <div class="slideshow__pagination" ng-if="hasPagination && images.length > 1">
+    <a
+      ng-click="setCurrentIndex($index)"
+      ng-repeat="image in images"
+      ng-class="{ 'is-active' : $index === currentIndex }"
+    >
+        {{ $index }}
+    </a>
+  </div>
+</div>
