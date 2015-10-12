@@ -1,0 +1,109 @@
+.mr-slides {
+  overflow: hidden;
+
+  @include breakpoint-up-to($min_width_small) {
+    -webkit-overflow-scroll: touch;
+    overflow: auto;
+  }
+}
+
+.mr-slides__stage {
+  cursor: grab;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+
+  @include breakpoint-from($min_width_small) {
+    padding-top: 66.6666666667%;
+  }
+
+  &.is-grabbing {
+    cursor: grabbing;
+  }
+
+  //
+  // Styles for mobile horizontal scroller
+  //
+  // According to the image count, we set the width of our container
+  //
+  // On small: 2 images visible
+  // On xsmall: 1 image visible
+  //
+  @for $i from 1 through 10 {
+
+    &[data-count="#{$i}"] {
+
+      @include breakpoint-up-to($min_width_small) {
+        width: $i * 100%;
+      }
+    }
+  }
+}
+
+.mr-slides__stage__image {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: none;
+  display: block;
+
+  @include breakpoint-from($min_width_small) {
+    left: 0;
+    opacity: 0;
+    padding-top: 66.6666666667%;
+    position: absolute;
+    top: 0;
+    transition: opacity 500ms, transform 500ms $ease-in-out-sine;
+    transform: translateX(0);
+    width: 100%;
+    z-index: 0;
+  }
+
+  img {
+    display: none;
+  }
+
+  // Styles for mobile horizontal scroller
+  //
+  // According to the image count, we set the width & padding-top of our container
+  // so the ratio always stays perfect
+  //
+  @for $i from 1 through 10 {
+
+    .mr-slides__stage[data-count="#{$i}"] & {
+
+      @include breakpoint-up-to($min_width_small) {
+        float: left;
+        margin: 0 (2% / $i);
+        padding-top: 96% / $i;
+        width: 96% / $i;
+      }
+    }
+  }
+
+  //
+  // Styles for slideshow non-mobile (from small < ...)
+  //
+  &.is-current {
+    @include breakpoint-from($min_width_small) {
+      opacity: 1;
+      transform: translateX(0);
+      z-index: 20;
+    }
+  }
+
+  &.is-next {
+    @include breakpoint-from($min_width_small) {
+      transform: translateX(100%);
+      z-index: 10;
+    }
+  }
+
+  &.is-prev {
+
+    @include breakpoint-from($min_width_small) {
+      transform: translateX(-100%);
+      z-index: 10;
+    }
+  }
+}
