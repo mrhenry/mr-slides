@@ -14,7 +14,7 @@ skate('js-slideshow', {
  * @class
  * Slideshow
  */
-class Slideshow {
+export default class Slideshow {
 
     /**
      * @constructor

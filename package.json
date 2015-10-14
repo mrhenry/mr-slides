@@ -1,0 +1,35 @@
+{
+  "name": "mr-slides",
+  "version": "0.0.1",
+  "description": "Basic & flexible slideshow where the logic is in JS & the fun in CSS",
+  "main": "src/mr-slides.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mrhenry/mr-slides"
+  },
+  "keywords": [
+    "slideshow",
+    "carousel",
+    "slide"
+  ],
+  "author": [
+    "Yves Van Broekhoven <yves@mrhenry.be>",
+    "Pieter Beulque <pieter@mrhenry.be>",
+    "Simon Menke <simon@mrhenry.be>"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mrhenry/mr-slides/issues"
+  },
+  "homepage": "https://github.com/mrhenry/mr-slides",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-babel": "^5.2.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.0.4",
+    "gulp-uglify": "^1.4.2"
+  }
+}

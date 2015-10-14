@@ -1,0 +1,140 @@
+.mr-slides {
+  overflow: hidden; }
+  @media only screen and (max-width: 767px) {
+    .mr-slides {
+      -webkit-overflow-scroll: touch;
+      overflow: auto; } }
+
+.mr-slides__stage {
+  cursor: grab;
+  overflow: hidden;
+  position: relative;
+  width: 100%; }
+  @media only screen and (min-width: 768px) {
+    .mr-slides__stage {
+      padding-top: 66.6666666667%; } }
+  .mr-slides__stage.is-grabbing {
+    cursor: grabbing; }
+  @media only screen and (max-width: 767px) {
+    .mr-slides__stage[data-count="1"] {
+      width: 100%; } }
+  @media only screen and (max-width: 767px) {
+    .mr-slides__stage[data-count="2"] {
+      width: 200%; } }
+  @media only screen and (max-width: 767px) {
+    .mr-slides__stage[data-count="3"] {
+      width: 300%; } }
+  @media only screen and (max-width: 767px) {
+    .mr-slides__stage[data-count="4"] {
+      width: 400%; } }
+  @media only screen and (max-width: 767px) {
+    .mr-slides__stage[data-count="5"] {
+      width: 500%; } }
+  @media only screen and (max-width: 767px) {
+    .mr-slides__stage[data-count="6"] {
+      width: 600%; } }
+  @media only screen and (max-width: 767px) {
+    .mr-slides__stage[data-count="7"] {
+      width: 700%; } }
+  @media only screen and (max-width: 767px) {
+    .mr-slides__stage[data-count="8"] {
+      width: 800%; } }
+  @media only screen and (max-width: 767px) {
+    .mr-slides__stage[data-count="9"] {
+      width: 900%; } }
+  @media only screen and (max-width: 767px) {
+    .mr-slides__stage[data-count="10"] {
+      width: 1000%; } }
+
+.mr-slides__stage__image {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: none;
+  display: block; }
+  @media only screen and (min-width: 768px) {
+    .mr-slides__stage__image {
+      left: 0;
+      opacity: 0;
+      padding-top: 66.6666666667%;
+      position: absolute;
+      top: 0;
+      transition: opacity 500ms, transform 500ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+      transform: translateX(0);
+      width: 100%;
+      z-index: 0; } }
+  .mr-slides__stage__image img {
+    display: none; }
+  @media only screen and (max-width: 767px) {
+    .mr-slides__stage[data-count="1"] .mr-slides__stage__image {
+      float: left;
+      margin: 0 2%;
+      padding-top: 96%;
+      width: 96%; } }
+  @media only screen and (max-width: 767px) {
+    .mr-slides__stage[data-count="2"] .mr-slides__stage__image {
+      float: left;
+      margin: 0 1%;
+      padding-top: 48%;
+      width: 48%; } }
+  @media only screen and (max-width: 767px) {
+    .mr-slides__stage[data-count="3"] .mr-slides__stage__image {
+      float: left;
+      margin: 0 0.66667%;
+      padding-top: 32%;
+      width: 32%; } }
+  @media only screen and (max-width: 767px) {
+    .mr-slides__stage[data-count="4"] .mr-slides__stage__image {
+      float: left;
+      margin: 0 0.5%;
+      padding-top: 24%;
+      width: 24%; } }
+  @media only screen and (max-width: 767px) {
+    .mr-slides__stage[data-count="5"] .mr-slides__stage__image {
+      float: left;
+      margin: 0 0.4%;
+      padding-top: 19.2%;
+      width: 19.2%; } }
+  @media only screen and (max-width: 767px) {
+    .mr-slides__stage[data-count="6"] .mr-slides__stage__image {
+      float: left;
+      margin: 0 0.33333%;
+      padding-top: 16%;
+      width: 16%; } }
+  @media only screen and (max-width: 767px) {
+    .mr-slides__stage[data-count="7"] .mr-slides__stage__image {
+      float: left;
+      margin: 0 0.28571%;
+      padding-top: 13.71429%;
+      width: 13.71429%; } }
+  @media only screen and (max-width: 767px) {
+    .mr-slides__stage[data-count="8"] .mr-slides__stage__image {
+      float: left;
+      margin: 0 0.25%;
+      padding-top: 12%;
+      width: 12%; } }
+  @media only screen and (max-width: 767px) {
+    .mr-slides__stage[data-count="9"] .mr-slides__stage__image {
+      float: left;
+      margin: 0 0.22222%;
+      padding-top: 10.66667%;
+      width: 10.66667%; } }
+  @media only screen and (max-width: 767px) {
+    .mr-slides__stage[data-count="10"] .mr-slides__stage__image {
+      float: left;
+      margin: 0 0.2%;
+      padding-top: 9.6%;
+      width: 9.6%; } }
+  @media only screen and (min-width: 768px) {
+    .mr-slides__stage__image.is-current {
+      opacity: 1;
+      transform: translateX(0);
+      z-index: 20; } }
+  @media only screen and (min-width: 768px) {
+    .mr-slides__stage__image.is-next {
+      transform: translateX(100%);
+      z-index: 10; } }
+  @media only screen and (min-width: 768px) {
+    .mr-slides__stage__image.is-prev {
+      transform: translateX(-100%);
+      z-index: 10; } }

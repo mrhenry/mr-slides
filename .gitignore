@@ -1,0 +1,8 @@
+# Ignore all logfiles and tempfiles.
+/log/*.log
+/tmp
+/public/uploads
+.DS_Store
+
+# Ignore node modules
+/node_modules
