@@ -1,15 +1,3 @@
-import 'skatejs/src/skate';
-
-/**
- * Skate module
- */
-skate('js-slideshow', {
-    attached: (el) => {
-        new Slideshow( $(el) );
-    },
-    type: skate.type.CLASSNAME
-});
-
 /**
  * @class
  * Slideshow
@@ -31,11 +19,6 @@ export default class Slideshow {
         this.$next = this.$el.find(this.nextSelector);
         this.prevSelector = this.$el.data('slideshow-prev');
         this.$prev = this.$el.find(this.prevSelector);
-
-        // Ratio of distance over target finger must travel to be
-        // considered a swipe.
-        // https://github.com/stephband/jquery.event.swipe/blob/master/js/jquery.event.swipe.js#L13
-        jQuery.event.special.swipe.settings.threshold = 0.1;
 
         this.bind().init();
     }
