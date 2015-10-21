@@ -19,7 +19,7 @@ gulp.task('stylesheets', function() {
     return gulp.src('src/standalone.scss')
         .pipe( sass() )
         .pipe( gulp.dest('dist'));
-})
+});
 
 gulp.task('default', ['stylesheets', 'javascript'], function() {
     gulp.watch('src/*.scss', ['stylesheets']);
