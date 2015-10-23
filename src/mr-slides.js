@@ -2,7 +2,7 @@
  * @class
  * Slideshow
  */
-export default class Slideshow {
+export default class MrSlides {
 
     /**
      * @constructor

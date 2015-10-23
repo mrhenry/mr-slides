@@ -6,7 +6,9 @@ var uglify = require('gulp-uglify');
 
 gulp.task('javascript', function() {
     return gulp.src('src/mr-slides.js')
-        .pipe( babel() )
+        .pipe( babel({
+            'modules': 'umd'
+        }) )
         .pipe( gulp.dest('dist') )
         .pipe( uglify() )
         .pipe( rename(function(path) {
