@@ -59,7 +59,7 @@ function release(importance) {
         // read only one file to get the version number
         .pipe(filter('package.json'))
         // **tag it in the repository**
-        .pipe(tag_version());
+        .pipe(tagVersion());
 }
 
 gulp.task('patch', function() { return release('patch'); })
