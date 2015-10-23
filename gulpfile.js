@@ -1,4 +1,7 @@
 var babel = require('gulp-babel');
+var bump = require('gulp-bump');
+var filter = require('gulp-filter');
+var git = require('gulp-git');
 var gulp = require('gulp');
 var rename = require('gulp-rename');
 var sass = require('gulp-sass');
