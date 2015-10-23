@@ -1,3 +1,7 @@
+/**
+ * @class
+ * Slideshow
+ */
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -7,23 +11,6 @@ Object.defineProperty(exports, '__esModule', {
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-require('skatejs/src/skate');
-
-/**
- * Skate module
- */
-skate('js-slideshow', {
-    attached: function attached(el) {
-        new Slideshow($(el));
-    },
-    type: skate.type.CLASSNAME
-});
-
-/**
- * @class
- * Slideshow
- */
 
 var Slideshow = (function () {
 
@@ -45,11 +32,6 @@ var Slideshow = (function () {
         this.$next = this.$el.find(this.nextSelector);
         this.prevSelector = this.$el.data('slideshow-prev');
         this.$prev = this.$el.find(this.prevSelector);
-
-        // Ratio of distance over target finger must travel to be
-        // considered a swipe.
-        // https://github.com/stephband/jquery.event.swipe/blob/master/js/jquery.event.swipe.js#L13
-        jQuery.event.special.swipe.settings.threshold = 0.1;
 
         this.bind().init();
     }
