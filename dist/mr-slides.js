@@ -227,7 +227,7 @@
                 });
 
                 // Save current index
-                this.$el.data('slideshow-current-idx', idx);
+                this.$el.data('mr-slides-current-idx', idx);
             }
         }]);
 
