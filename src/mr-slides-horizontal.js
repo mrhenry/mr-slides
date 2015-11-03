@@ -23,13 +23,13 @@ export default class MrSlidesHorizontal extends MrSlides {
         });
 
         if (e.distX < 0) {
-            $slide.next().css({
+            $slide.next(this.slidesSelector).css({
                 transform: 'translateX(' + (100 + left) + '%)'
             });
         }
 
         if (e.distX > 0) {
-            $slide.prev().css({
+            $slide.prev(this.slidesSelector).css({
                 transform: 'translateX(' + (left - 100) + '%)'
             });
         }
