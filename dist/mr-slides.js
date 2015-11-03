@@ -33,13 +33,13 @@
             _classCallCheck(this, MrSlides);
 
             this.$el = $el;
-            this.slidesSelector = this.$el.data('slideshow-slides');
+            this.slidesSelector = this.$el.data('mr-slides-slides');
             this.$slides = this.$el.find(this.slidesSelector);
-            this.navSelector = this.$el.data('slideshow-nav');
+            this.navSelector = this.$el.data('mr-slides-nav');
             this.$nav = $(this.navSelector);
-            this.nextSelector = this.$el.data('slideshow-next');
+            this.nextSelector = this.$el.data('mr-slides-next');
             this.$next = this.$el.find(this.nextSelector);
-            this.prevSelector = this.$el.data('slideshow-prev');
+            this.prevSelector = this.$el.data('mr-slides-prev');
             this.$prev = this.$el.find(this.prevSelector);
 
             this.bind().init();
@@ -54,9 +54,9 @@
         _createClass(MrSlides, [{
             key: 'bind',
             value: function bind() {
-                this.$nav.on('click.slideshow', 'a', $.proxy(this.onClickNavItem, this));
-                this.$next.on('click.slideshow', $.proxy(this.onNext, this));
-                this.$prev.on('click.slideshow', $.proxy(this.onPrev, this));
+                this.$nav.on('click.mrSlides', 'a', $.proxy(this.onClickNavItem, this));
+                this.$next.on('click.mrSlides', $.proxy(this.onNext, this));
+                this.$prev.on('click.mrSlides', $.proxy(this.onPrev, this));
                 this.$el.on('swipeleft', $.proxy(this.onNext, this));
                 this.$el.on('swiperight', $.proxy(this.onPrev, this));
                 this.$el.on('mousedown', $.proxy(this.onMouseDown, this));
@@ -76,6 +76,8 @@
         }, {
             key: 'init',
             value: function init() {
+                var _this = this;
+
                 var activeIdx = this.getCurrentIdx();
 
                 if (isNaN(activeIdx)) {
@@ -83,6 +85,10 @@
                 } else {
                     this.to(activeIdx);
                 }
+
+                setTimeout(function () {
+                    _this.$el.addClass('is-ready');
+                }, this.getReadyDelay);
 
                 return this;
             }
@@ -95,7 +101,27 @@
         }, {
             key: 'getCurrentIdx',
             value: function getCurrentIdx() {
-                return parseInt(this.$el.data('slideshow-current-idx'), 10);
+                return parseInt(this.$el.data('mr-slides-current-idx'), 10);
+            }
+
+            /**
+             * Get ready delay
+             *
+             * As the delay can be depending on transitions of slide or pane, it's more
+             * solid to set this manually.
+             *
+             * @return {Integer}
+             */
+        }, {
+            key: 'getReadyDelay',
+            value: function getReadyDelay() {
+                var delay = parseInt(this.$el.data('mr-slides-ready-delay'), 10);
+
+                if (isNaN(delay)) {
+                    delay = 0;
+                }
+
+                return delay;
             }
 
             /**
@@ -121,7 +147,9 @@
              */
         }, {
             key: 'onNext',
-            value: function onNext(e) {
+            value: function onNext() {
+                var e = arguments.length <= 0 || arguments[0] === undefined ? jQuery.Event() : arguments[0];
+
                 var nextIdx = this.getCurrentIdx() + 1;
 
                 if (nextIdx > this.$slides.length - 1) {
@@ -150,7 +178,9 @@
              */
         }, {
             key: 'onPrev',
-            value: function onPrev(e) {
+            value: function onPrev() {
+                var e = arguments.length <= 0 || arguments[0] === undefined ? jQuery.Event() : arguments[0];
+
                 var prevIdx = this.getCurrentIdx() - 1;
 
                 if (prevIdx < 0) {
@@ -170,7 +200,7 @@
         }, {
             key: 'to',
             value: function to(idx) {
-                var _this = this;
+                var _this2 = this;
 
                 // Set nav states
                 this.$nav.find('a').removeClass('is-current');
@@ -185,13 +215,13 @@
                         $slide.addClass('is-current');
                         $slide.nextAll().addClass('is-next');
                         $slide.prevAll().addClass('is-prev');
-                    } else if (idx + 1 === slideIdx || idx + 1 - _this.$slides.length === slideIdx) {
+                    } else if (idx + 1 === slideIdx || idx + 1 - _this2.$slides.length === slideIdx) {
                         $slide.addClass('is-next-1');
-                    } else if (idx + 2 === slideIdx || idx + 2 - _this.$slides.length === slideIdx) {
+                    } else if (idx + 2 === slideIdx || idx + 2 - _this2.$slides.length === slideIdx) {
                         $slide.addClass('is-next-2');
-                    } else if (idx - 1 === slideIdx || idx - 1 + _this.$slides.length === slideIdx) {
+                    } else if (idx - 1 === slideIdx || idx - 1 + _this2.$slides.length === slideIdx) {
                         $slide.addClass('is-prev-1');
-                    } else if (idx - 2 === slideIdx || idx - 2 + _this.$slides.length === slideIdx) {
+                    } else if (idx - 2 === slideIdx || idx - 2 + _this2.$slides.length === slideIdx) {
                         $slide.addClass('is-prev-2');
                     }
                 });
