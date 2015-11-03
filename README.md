@@ -5,36 +5,41 @@ Basic &amp; flexible slideshow where the logic is in JS &amp; the fun in CSS
 
 ```
 <div
-    class="mr-slides js-slideshow"
-    data-count=""
-    data-slideshow-active-idx="0"
-    data-slideshow-nav=".bullet-nav"
-    data-slideshow-slides=".mr-slides__slide">
+  class="mr-slides js-slideshow"
+  data-mr-slides-current-idx="0"
+  data-mr-slides-ready-delay="500"
+  data-mr-slides-nav="#unique-bullet-nav"
+  data-mr-slides-slides=".mr-slides__slide">
 
-    <div class="mr-slides__slide">
-      <div clss="mr-slides__slide__background"></div>
-      <div class="mr-slides__slide__content">
-        Slide A
-      </div>
-    </div>
-    <div class="mr-slides__slide">
-      <div clss="mr-slides__slide__background"></div>
-      <div class="mr-slides__slide__content">
-        Slide B
-      </div>
+  <div class="mr-slides__slide">
+    <div clss="mr-slides__slide__background"></div>
+    <div class="mr-slides__slide__content">
+      Slide A
     </div>
   </div>
 
-  <div class="bullet-nav">
-    <ul class="bullet-nav__list">
-      <li class="bullet-nav__item">
-        <a href="#">go to a</a>
-      </li>
-      <li class="bullet-nav__item">
-        <a href="#">go to b</a>
-      </li>
-    </ul>
+  <div class="mr-slides__slide">
+    <div clss="mr-slides__slide__background"></div>
+    <div class="mr-slides__slide__content">
+      Slide B
+    </div>
   </div>
+</div>
+
+<div id="unique-bullet-nav" class="bullet-nav">
+  <ul class="bullet-nav__list">
+    <li class="bullet-nav__item">
+      <a href="#">
+        go to a
+      </a>
+    </li>
+    <li class="bullet-nav__item">
+      <a href="#">
+        go to b
+      </a>
+    </li>
+  </ul>
+</div>
 ```
 
 ## Angular usage

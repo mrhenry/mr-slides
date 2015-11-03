@@ -29,6 +29,10 @@ export default class MrSlides {
      * @return {Slideshow}
      */
     bind() {
+        if ( this.$slides.length < 2 ) {
+            return this;
+        }
+
         this.$nav.on('click.mrSlides', 'a', $.proxy(this.onClickNavItem, this));
         this.$next.on('click.mrSlides', $.proxy(this.onNext, this));
         this.$prev.on('click.mrSlides', $.proxy(this.onPrev, this));
@@ -36,9 +40,6 @@ export default class MrSlides {
         this.$el.on('swiperight', $.proxy(this.onPrev, this));
         this.$el.on('mousedown', $.proxy(this.onMouseDown, this));
         this.$el.on('mouseup', $.proxy(this.onMouseUp, this));
-//        this.$el.on('move', function(e) {
-//            console.log(e.startX, e.deltaX);
-//        });
 
         return this;
     }
@@ -51,6 +52,7 @@ export default class MrSlides {
     init() {
         let activeIdx = this.getCurrentIdx();
 
+        // Set initial first slide
         if ( isNaN(activeIdx) ) {
             this.to(0);
 
@@ -58,6 +60,15 @@ export default class MrSlides {
             this.to(activeIdx);
         }
 
+        // Set class when not enough slides
+        if ( this.$slides.length < 2 ) {
+            this.$el.addClass('has-not-enough-slides');
+            this.$nav.addClass('has-not-enough-slides');
+        }
+
+        // Set ready class with delay
+        // Fixes problem when your slides have a transition and you don't want
+        // to transition in initialization
         setTimeout(() => {
             this.$el.addClass('is-ready');
         }, this.getReadyDelay);

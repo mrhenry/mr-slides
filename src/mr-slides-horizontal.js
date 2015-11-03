@@ -2,11 +2,20 @@ import MrSlides from 'mrhenry/mr-slides';
 
 export default class MrSlidesHorizontal extends MrSlides {
 
+    /**
+     * Bind drag events
+     *
+     * @return {Slideshow}
+     */
     bind() {
         super.bind();
 
-        this.$slides.on('movestart', function(e) {
-            // Fixes slide drag with link
+        if ( this.$slides.length < 2 ) {
+            return this;
+        }
+
+        this.$slides.on('movestart', () => {
+            // Fixes slide drag when element is a link
         });
         this.$slides.on('move', $.proxy(this.onMove, this));
         this.$slides.on('moveend', $.proxy(this.onMoveEnd, this));
@@ -14,6 +23,11 @@ export default class MrSlidesHorizontal extends MrSlides {
         return this;
     }
 
+    /**
+     * Move handler
+     *
+     * @param  {jQuery event} e
+     */
     onMove(e) {
         let $slide = $(e.currentTarget);
         let left = 100 * e.distX / $(window).width() / 5;
@@ -35,7 +49,12 @@ export default class MrSlidesHorizontal extends MrSlides {
         }
     }
 
-    onMoveEnd() {
+    /**
+     * Move end handler
+     *
+     * @param  {jQuery event}
+     */
+    onMoveEnd(e) {
         this.$slides.css({
             'transform': ''
         });
