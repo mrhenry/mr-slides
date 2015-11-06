@@ -9,7 +9,7 @@ var tagVersion = require('gulp-tag-version');
 var uglify = require('gulp-uglify');
 
 gulp.task('javascript', function() {
-    return gulp.src('src/mr-slides.js')
+    return gulp.src(['src/mr-slides.js', 'src/mr-slides-horizontal.js'])
         .pipe( babel({
             'modules': 'umd'
         }) )

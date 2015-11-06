@@ -14,9 +14,7 @@ export default class MrSlidesHorizontal extends MrSlides {
             return this;
         }
 
-        this.$slides.on('movestart', () => {
-            // Fixes slide drag when element is a link
-        });
+        this.$slides.on('movestart', $.proxy(this.onMoveStart, this));
         this.$slides.on('move', $.proxy(this.onMove, this));
         this.$slides.on('moveend', $.proxy(this.onMoveEnd, this));
 
@@ -58,5 +56,18 @@ export default class MrSlidesHorizontal extends MrSlides {
         this.$slides.css({
             'transform': ''
         });
+    }
+
+   /**
+     * Move start handler
+     *
+     * This prevents that vertical scroll gets blocked
+     *
+     * @param  {jQuery event} e
+     */
+    onMoveStart(e) {
+        if ( Math.abs(e.deltaY) > 3 ) {
+            e.preventDefault();
+        }
     }
 }
