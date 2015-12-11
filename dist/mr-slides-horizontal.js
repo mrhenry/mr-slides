@@ -65,7 +65,7 @@
             key: 'onMove',
             value: function onMove(e) {
                 var $slide = $(e.currentTarget);
-                var left = 100 * e.distX / $(window).width() / 5;
+                var left = 100 * e.distX / $(window).width() / 1.5;
 
                 $slide.css({
                     transform: 'translateX(' + left + '%)'
