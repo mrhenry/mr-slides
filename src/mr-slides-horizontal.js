@@ -28,7 +28,7 @@ export default class MrSlidesHorizontal extends MrSlides {
      */
     onMove(e) {
         let $slide = $(e.currentTarget);
-        let left = 100 * e.distX / $(window).width() / 5;
+        let left = 100 * e.distX / $(window).width() / 1.5;
 
         $slide.css({
             transform: 'translateX(' + left + '%)'

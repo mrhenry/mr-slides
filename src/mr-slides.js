@@ -38,8 +38,8 @@ export default class MrSlides {
         this.$prev.on('click.mrSlides', $.proxy(this.onPrev, this));
         this.$el.on('swipeleft', $.proxy(this.onNext, this));
         this.$el.on('swiperight', $.proxy(this.onPrev, this));
-        this.$el.on('mousedown', $.proxy(this.onMouseDown, this));
-        this.$el.on('mouseup', $.proxy(this.onMouseUp, this));
+        this.$el.on('mousedown touchstart', $.proxy(this.onMouseDown, this));
+        this.$el.on('mouseup touchend touchcancel', $.proxy(this.onMouseUp, this));
 
         return this;
     }
