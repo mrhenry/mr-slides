@@ -7,8 +7,9 @@ Basic &amp; flexible slideshow where the logic is in JS &amp; the fun in CSS
 <div
   class="mr-slides js-slideshow"
   data-mr-slides-current-idx="0"
-  data-mr-slides-ready-delay="500"
+  data-mr-slides-interval-delay="3000"
   data-mr-slides-nav="#unique-bullet-nav"
+  data-mr-slides-ready-delay="500"
   data-mr-slides-slides=".mr-slides__slide">
 
   <div class="mr-slides__slide">

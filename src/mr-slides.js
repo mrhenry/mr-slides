@@ -19,6 +19,7 @@ export default class MrSlides {
         this.$next = this.$el.find(this.nextSelector);
         this.prevSelector = this.$el.data('mr-slides-prev');
         this.$prev = this.$el.find(this.prevSelector);
+        this.intervalDelay = this.$el.data('mr-slides-interval-delay');
 
         this.bind().init();
     }
@@ -39,7 +40,7 @@ export default class MrSlides {
         this.$el.on('swipeleft', $.proxy(this.onNext, this));
         this.$el.on('swiperight', $.proxy(this.onPrev, this));
         this.$el.on('mousedown touchstart', $.proxy(this.onMouseDown, this));
-        this.$el.on('mouseup touchend touchcancel', $.proxy(this.onMouseUp, this));
+        this.$el.on('mouseup touchend', $.proxy(this.onMouseUp, this));
 
         return this;
     }
@@ -71,7 +72,11 @@ export default class MrSlides {
         // to transition in initialization
         setTimeout(() => {
             this.$el.addClass('is-ready');
-        }, this.getReadyDelay);
+        }, this.getReadyDelay());
+
+        if (this.intervalDelay) {
+            this.start();
+        }
 
         return this;
     }
@@ -112,6 +117,7 @@ export default class MrSlides {
         let $currentTarget = $(e.currentTarget);
         let idx = this.$nav.find('a').index($currentTarget);
 
+        this.stop();
         this.to(idx);
 
         e.preventDefault();
@@ -134,10 +140,21 @@ export default class MrSlides {
         e.preventDefault();
     }
 
+    /**
+     * Mouse down handler
+     *
+     * @param  {jQuery event} e
+     */
     onMouseDown(e) {
+        this.stop();
         this.$el.addClass('is-grabbing');
     }
 
+    /**
+     * Mouse up handler
+     *
+     * @param  {jQuery event} e
+     */
     onMouseUp(e) {
         this.$el.removeClass('is-grabbing');
     }
@@ -157,6 +174,23 @@ export default class MrSlides {
         this.to(prevIdx);
 
         e.preventDefault();
+    }
+
+    /**
+     * Start interval
+     */
+    start() {
+        this.intervalId = setInterval(() => {
+            this.onNext();
+        }, this.intervalDelay);
+    }
+
+    /**
+     * Stop interval
+     */
+    stop() {
+        clearInterval(this.intervalId);
+        this.intervalId = null;
     }
 
     /**
