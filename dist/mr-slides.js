@@ -41,6 +41,7 @@
             this.$next = this.$el.find(this.nextSelector);
             this.prevSelector = this.$el.data('mr-slides-prev');
             this.$prev = this.$el.find(this.prevSelector);
+            this.intervalDelay = this.$el.data('mr-slides-interval-delay');
 
             this.bind().init();
         }
@@ -64,7 +65,7 @@
                 this.$el.on('swipeleft', $.proxy(this.onNext, this));
                 this.$el.on('swiperight', $.proxy(this.onPrev, this));
                 this.$el.on('mousedown touchstart', $.proxy(this.onMouseDown, this));
-                this.$el.on('mouseup touchend touchcancel', $.proxy(this.onMouseUp, this));
+                this.$el.on('mouseup touchend', $.proxy(this.onMouseUp, this));
 
                 return this;
             }
@@ -99,7 +100,11 @@
                 // to transition in initialization
                 setTimeout(function () {
                     _this.$el.addClass('is-ready');
-                }, this.getReadyDelay);
+                }, this.getReadyDelay());
+
+                if (this.intervalDelay) {
+                    this.start();
+                }
 
                 return this;
             }
@@ -146,6 +151,7 @@
                 var $currentTarget = $(e.currentTarget);
                 var idx = this.$nav.find('a').index($currentTarget);
 
+                this.stop();
                 this.to(idx);
 
                 e.preventDefault();
@@ -171,11 +177,24 @@
 
                 e.preventDefault();
             }
+
+            /**
+             * Mouse down handler
+             *
+             * @param  {jQuery event} e
+             */
         }, {
             key: 'onMouseDown',
             value: function onMouseDown(e) {
+                this.stop();
                 this.$el.addClass('is-grabbing');
             }
+
+            /**
+             * Mouse up handler
+             *
+             * @param  {jQuery event} e
+             */
         }, {
             key: 'onMouseUp',
             value: function onMouseUp(e) {
@@ -204,6 +223,29 @@
             }
 
             /**
+             * Start interval
+             */
+        }, {
+            key: 'start',
+            value: function start() {
+                var _this2 = this;
+
+                this.intervalId = setInterval(function () {
+                    _this2.onNext();
+                }, this.intervalDelay);
+            }
+
+            /**
+             * Stop interval
+             */
+        }, {
+            key: 'stop',
+            value: function stop() {
+                clearInterval(this.intervalId);
+                this.intervalId = null;
+            }
+
+            /**
              * Go to slide
              *
              * @param  {Integer} idx The index of the image that will become active
@@ -211,7 +253,7 @@
         }, {
             key: 'to',
             value: function to(idx) {
-                var _this2 = this;
+                var _this3 = this;
 
                 // Set nav states
                 this.$nav.find('a').removeClass('is-current');
@@ -226,13 +268,13 @@
                         $slide.addClass('is-current');
                         $slide.nextAll().addClass('is-next');
                         $slide.prevAll().addClass('is-prev');
-                    } else if (idx + 1 === slideIdx || idx + 1 - _this2.$slides.length === slideIdx) {
+                    } else if (idx + 1 === slideIdx || idx + 1 - _this3.$slides.length === slideIdx) {
                         $slide.addClass('is-next-1');
-                    } else if (idx + 2 === slideIdx || idx + 2 - _this2.$slides.length === slideIdx) {
+                    } else if (idx + 2 === slideIdx || idx + 2 - _this3.$slides.length === slideIdx) {
                         $slide.addClass('is-next-2');
-                    } else if (idx - 1 === slideIdx || idx - 1 + _this2.$slides.length === slideIdx) {
+                    } else if (idx - 1 === slideIdx || idx - 1 + _this3.$slides.length === slideIdx) {
                         $slide.addClass('is-prev-1');
-                    } else if (idx - 2 === slideIdx || idx - 2 + _this2.$slides.length === slideIdx) {
+                    } else if (idx - 2 === slideIdx || idx - 2 + _this3.$slides.length === slideIdx) {
                         $slide.addClass('is-prev-2');
                     }
                 });
