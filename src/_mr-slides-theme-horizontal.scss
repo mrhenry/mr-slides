@@ -21,6 +21,13 @@
   transform: translateX(0);
   width: 100%;
   z-index: 0;
+  
+  .is-grabbing & {
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+    @include transition(none);
+  }
 
   &.is-current {
     opacity: 1;
