@@ -13,14 +13,14 @@ Basic &amp; flexible slideshow where the logic is in JS &amp; the fun in CSS
   data-mr-slides-slides=".mr-slides__slide">
 
   <div class="mr-slides__slide">
-    <div clss="mr-slides__slide__background"></div>
+    <div class="mr-slides__slide__background"></div>
     <div class="mr-slides__slide__content">
       Slide A
     </div>
   </div>
 
   <div class="mr-slides__slide">
-    <div clss="mr-slides__slide__background"></div>
+    <div class="mr-slides__slide__background"></div>
     <div class="mr-slides__slide__content">
       Slide B
     </div>
