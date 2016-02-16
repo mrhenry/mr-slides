@@ -1,26 +1,27 @@
-<div class="slideshow">
-  <a ng-click="previous()" class="slideshow__previous" ng-if="hasNavigation"></a>
-  <a ng-click="next()" class="slideshow__next" ng-if="hasNavigation"></a>
+<div class="mr-slides">
+  <a ng-click="previous()" class="mr-slides__previous" ng-if="hasNavigation"></a>
+  <a ng-click="next()" class="mr-slides__next" ng-if="hasNavigation"></a>
 
   <div
-    class="slideshow__image"
+    class="mr-slides__slide"
     ng-repeat="image in images"
     ng-class="{
       'is-next': $index > currentIndex,
       'is-previous': $index < currentIndex,
       'is-current': $index === currentIndex
-    }"
-  >
-    <img ng-src="{{:: image }}" alt="" />
+    }">
+    <div mr-haraway="image"></div>
   </div>
+</div>
 
-  <div class="slideshow__pagination" ng-if="hasPagination && images.length > 1">
-    <a
-      ng-click="setCurrentIndex($index)"
-      ng-repeat="image in images"
-      ng-class="{ 'is-active' : $index === currentIndex }"
-    >
+<div class="bullet-nav" ng-if="hasPagination && images.length > 1">
+  <ul>
+    <li ng-repeat="image in images">
+      <a
+        ng-click="setCurrentIndex($index)"
+        ng-class="{ 'is-active' : $index === currentIndex }">
         {{ $index }}
-    </a>
-  </div>
+      </a>
+    </li>
+  </ul>
 </div>
