@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+- '0.11'
+- '0.10'
+deploy:
+  provider: npm
+  email: yvesvanbroekhoven@gmail.com
+  api_key:
+    secure: Y6wGbUeItv4GI5GuqeJPm0yYM2wXpLpXsPnQG3KfidYXTNj8SZgKz04szYhYmbdxT3uZZXgICW2AcdmFxr1Qjd1qiQVKjLn0HWgdByMTNCkaIx47BXIbEWrjs1kZ518zSw24jhmnfvpG2XR3jqfBVjSJRJ93Sio6YA6Mc+Cob4NIm9cQeq6thEMWHWjT9SVR27ND1Mu6gawCy+59PueUuaSkfOf1WIrrNtakq9wbxPKz62QbMBtGu5tszuzTXUzvjH9xFhnHANpQY2i16qjGQzYwqdjL5SY0DkGDdm5eo1txRhmLUdF/OvGgooc7ccNjCtZ3TqTxoHTcS08qJVgvfDpZL1StntZIPX21jwwyl6ACRRPqhUOHgKBp5Q9cKS1ocpB3zsSxDE1DH6shdLMj5Hfrmh3gBvg4ftrmq64FVUnGhwEoaHi0zFW9CFp4sQU5HoAXwp7L5fsx3gsPmbAWjvhilDJ4QeRNTc5bjE8ZSc4p4BbY6ioIr41u4YpSPr0f3mNjW3BTc4PzPB9TcwCzUF0F6FTTvGIMsNTYi0AmKGNGqbEOY6ZndZXsKB04gFcv+qUyZFEyhcZMoFxOxM07zRxceycaan2FkorMm59xvTuU1qx5108ij0rEfJBlLMOiFyE+P9VIDQIVoWJv5Li2Z3SQEAewme2IJYGwUs5AUkA=
+  on:
+    tags: true
+    repo: mrhenry/mr-slides
