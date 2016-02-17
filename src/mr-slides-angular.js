@@ -1,5 +1,5 @@
 import {Component, Inject} from 'fd-angular-core';
-import TMPL from './slideshow.html!';
+import TMPL from './mr-slides-angular.html!';
 
 @Component({
     templateUrl: TMPL,
