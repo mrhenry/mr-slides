@@ -18,6 +18,11 @@
   transform: translateX(0);
   width: 100%;
   z-index: 0; }
+  .is-grabbing .mr-slides__slide {
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+    transition: none; }
   .mr-slides__slide.is-current {
     opacity: 1;
     transform: translateX(0);

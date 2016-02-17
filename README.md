@@ -43,6 +43,27 @@ Basic &amp; flexible slideshow where the logic is in JS &amp; the fun in CSS
 </div>
 ```
 
+## Events
+
+On change an event is triggered on the slide elements.
+
+```
+/* @param {Object} state
+ *
+ * {
+ *   current: boolean
+ * }
+ *
+ */
+$('.mr-slides__slide').on('mrSlides.stateChange', function(e, state) {
+  if (state.current) {
+    // This slide is now active
+  } else {
+    // This slide isn't active anymore
+  }
+});
+```
+
 ## Angular usage
 See [issue #1](https://github.com/mrhenry/mr-slides/issues/1).
 

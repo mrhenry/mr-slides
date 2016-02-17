@@ -209,9 +209,17 @@ export default class MrSlides {
             let $slide = $(slide);
 
             if ( idx === slideIdx ) {
-                $slide.addClass('is-current');
-                $slide.nextAll().addClass('is-next');
-                 $slide.prevAll().addClass('is-prev');
+                $slide
+                    .addClass('is-current')
+                    .trigger('mrSlides.stateChange', { current: true });
+
+                $slide.nextAll()
+                    .addClass('is-next')
+                    .trigger('mrSlides.stateChange', { current: false });
+
+                $slide.prevAll()
+                    .addClass('is-prev')
+                    .trigger('mrSlides.stateChange', { current: false });
 
             } else if ( idx + 1 === slideIdx ||
                         idx + 1 - this.$slides.length === slideIdx ) {
