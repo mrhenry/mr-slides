@@ -1,6 +1,6 @@
 {
   "name": "mr-slides",
-  "version": "0.0.21",
+  "version": "0.0.22",
   "description": "Basic & flexible slideshow where the logic is in JS & the fun in CSS",
   "main": "src/mr-slides.js",
   "scripts": {
