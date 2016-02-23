@@ -14,9 +14,9 @@
   </div>
 </div>
 
-<div class="bullet-nav" ng-if="hasPagination && images.length > 1">
-  <ul>
-    <li ng-repeat="image in images">
+<div class="mr-slides-pagination" ng-if="hasPagination && images.length > 1">
+  <ul class="mr-slides-pagination__list">
+    <li class="mr-slides-pagination__item" ng-repeat="image in images">
       <a
         ng-click="setCurrentIndex($index)"
         ng-class="{ 'is-active' : $index === currentIndex }">
