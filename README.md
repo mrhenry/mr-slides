@@ -3,6 +3,8 @@ Basic &amp; flexible slideshow where the logic is in JS &amp; the fun in CSS
 
 ## How to use
 
+### Regular HTML/JS/CSS setup
+
 ```
 <div
   class="mr-slides js-slideshow"
@@ -40,6 +42,45 @@ Basic &amp; flexible slideshow where the logic is in JS &amp; the fun in CSS
       </a>
     </li>
   </ul>
+</div>
+```
+
+### Angular.js
+
+There's an Angular.js port with the same approach.
+
+Import `src/ng/mr-slides`, which exposes an `mr-slides` directive.
+
+#### Basic usage
+
+```
+<div mr-slides="gallery.images"></div>
+```
+
+In which `gallery.images` is an array of strings that will get passed to `mr-haraway` directive.
+
+#### Custom slides
+
+You can override the default slide template by adding a `<script type="text/ng-template">` tag with an `id` and then passing the same `id` as to `mr-slides` through the `slide-template` argument.
+
+You can also externally control the current index from another controller by passing an reference or number through the `current` attribute.
+
+```
+<div ng-init="myExternalCounter = 0">
+
+  <a ng-click="myExternalCounter = myExternalCounter - 1">Previous</a><br />
+  Current: {{ myExternalCounter }}<br />
+  <a ng-click="myExternalCounter = myExternalCounter + 1">Next</a>
+
+  <script type="text/ng-template" id="my-slide">
+    {{ slide.title }}
+  </script>
+
+  <div
+    mr-slides="[ { title: 'Jan' }, { title: 'Piet' }, { title: 'Joris' }, { title: 'Korneel' } ]"
+    slide-template="my-slide"
+    current="myExternalCounter"
+  ></div>
 </div>
 ```
 

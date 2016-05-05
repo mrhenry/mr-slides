@@ -1,0 +1,37 @@
+<div class="mr-slides" ng-attr-data-template="{{ mrSlides.className }}">
+	<div class="mr-slides__slides">
+		<a
+			ng-if="mrSlides.hasNavigation"
+			ng-click="mrSlides.currentIndex = mrSlides.currentIndex + 1"
+			class="mr-slides__next"
+		></a>
+
+		<a
+			ng-if="mrSlides.hasNavigation"
+			ng-click="mrSlides.currentIndex = mrSlides.currentIndex - 1"
+			class="mr-slides__previous"
+		></a>
+
+		<div
+			class="mr-slides__slide"
+			ng-class="{
+				'is-current': $index === mrSlides.currentIndex,
+				'is-previous': $index === mrSlides.currentIndex - 1 || ($index === mrSlides.slides.length - 1 && mrSlides.currentIndex === 0),
+				'is-next': $index === mrSlides.currentIndex + 1 || ($index === 0 && mrSlides.currentIndex === mrSlides.slides.length - 1),
+			}"
+			ng-repeat="slide in mrSlides.slides track by $index"
+			ng-include="mrSlides.slideTemplate"
+		>
+		</div>
+	</div>
+
+	<div class="mr-slides__pagination" ng-if="mrSlides.hasPagination">
+		<a
+			ng-repeat="slide in mrSlides.slides track by $index"
+			ng-click="mrSlides.currentIndex = $index"
+			ng-class="{ 'is-active': mrSlides.currentIndex === $index }"
+		>
+			{{ $index + 1 }}
+		</a>
+	</div>
+</div>
