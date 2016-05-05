@@ -5,7 +5,7 @@ Basic &amp; flexible slideshow where the logic is in JS &amp; the fun in CSS
 
 ### Regular HTML/JS/CSS setup
 
-```
+```html
 <div
   class="mr-slides js-slideshow"
   data-mr-slides-current-idx="0"
@@ -53,7 +53,7 @@ Import `src/ng/mr-slides`, which exposes an `mr-slides` directive.
 
 #### Basic usage
 
-```
+```html
 <div mr-slides="gallery.images"></div>
 ```
 
@@ -65,7 +65,7 @@ You can override the default slide template by adding a `<script type="text/ng-t
 
 You can also externally control the current index from another controller by passing an reference or number through the `current` attribute.
 
-```
+```html
 <div ng-init="myExternalCounter = 0">
 
   <a ng-click="myExternalCounter = myExternalCounter - 1">Previous</a><br />
@@ -88,7 +88,7 @@ You can also externally control the current index from another controller by pas
 
 On change an event is triggered on the slide elements.
 
-```
+```js
 /* @param {Object} state
  *
  * {
@@ -104,9 +104,6 @@ $('.mr-slides__slide').on('mrSlides.stateChange', function(e, state) {
   }
 });
 ```
-
-## Angular usage
-See [issue #1](https://github.com/mrhenry/mr-slides/issues/1).
 
 ## Dev
 
