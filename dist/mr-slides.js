@@ -255,6 +255,9 @@
             value: function to(idx) {
                 var _this3 = this;
 
+                // Save current index
+                this.$el.data('mr-slides-current-idx', idx);
+
                 // Set nav states
                 this.$nav.find('a').removeClass('is-current');
                 this.$nav.find('a').eq(idx).addClass('is-current');
@@ -280,9 +283,6 @@
                         $slide.addClass('is-prev-2');
                     }
                 });
-
-                // Save current index
-                this.$el.data('mr-slides-current-idx', idx);
             }
         }]);
 

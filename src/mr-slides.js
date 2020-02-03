@@ -199,6 +199,9 @@ export default class MrSlides {
      * @param  {Integer} idx The index of the image that will become active
      */
     to(idx) {
+        // Save current index
+        this.$el.data('mr-slides-current-idx', idx);
+
         // Set nav states
         this.$nav.find('a').removeClass('is-current');
         this.$nav.find('a').eq(idx).addClass('is-current');
@@ -239,8 +242,5 @@ export default class MrSlides {
 
             }
         });
-
-        // Save current index
-        this.$el.data('mr-slides-current-idx', idx);
     }
 }
